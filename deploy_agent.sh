@@ -55,7 +55,7 @@ fi
 TARGET_DIR="attendance_tracker_${TAG}"
 
 if [ -d "$TARGET_DIR" ]; then
-read -p "Directory $TARGET_DIR already exists. Overwrite? (y/n): "
+read -p "Directory $TARGET_DIR already exists. Overwrite? (y/n): " OVERWRITE
 if [ "$OVERWRITE" = "y" ] || [ "$OVERWRITE" = "Y" ]; then
 rm -rf "$TARGET_DIR"
 else
@@ -152,14 +152,14 @@ python3 attendance_checker.py
 cd ..
 }
 
-#Archive Log file with file stamp 
+#Archive Log file with file stamp
 
-archive_log() {
+archive_logs() {
 echo "Feature 3: Archive Logs"
 read -p "Enter project tag to archive logs from (e.g v1): " TAG
-TARGET_DIR="attendance_tracker_${TAG}
+TARGET_DIR="attendance_tracker_${TAG}"
 
-if [ ! -d "$TARGET_DIR" ]; THEN 
+if [ ! -d "$TARGET_DIR" ]; then
 echo "Error: Directory $TARGET_DIR does not exist."
 return
 fi
@@ -170,7 +170,7 @@ mkdir -p "$TARGET_DIR/archives/attendance"
 mkdir -p "$TARGET_DIR/archives/absent"
 
 if [ -f "$TARGET_DIR/reports/attendance.log" ]; then
-cp $"TARGET_DIR/reports/attendance.log" "$TARGET_DIR/archives/attendance/attendance_${TIMESTAMP}.LOG"
+cp "$TARGET_DIR/reports/attendance.log" "$TARGET_DIR/archives/attendance/attendance_${TIMESTAMP}.LOG"
 echo "Archived: $TARGET_DIR/archives/absent/absent_${TIMESTAMP}.log"
 else
 echo "Note: reports/attendance.log not found."
@@ -183,3 +183,22 @@ else
 echo "Note: reports/absent.log not found (no absences recorded)."
 fi
 }
+
+#Main menu loop
+while true; do
+echo ""
+echo "MAIN MENU"
+echo "1) Deploy Application"
+echo "2) Run Application"
+echo "3) Archive Logs"
+echo "4) Exit"
+read -p "Select an option (1-4): " CHOICE
+
+case "$CHOICE" in
+1) deploy_app ;;
+2) run_app "" ;;
+3) archive_logs ;;
+4) echo "Existing script."; exit 0 ;;
+*) echo "Invalid choice, please select between 1 and 4." ;;
+esac
+done
