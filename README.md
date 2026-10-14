@@ -40,16 +40,25 @@ attendance_tracker_<tag>/
 └── archives/
     ├── attendance/
     └── absent/
- Prerequisites
-Ensure your local environment has the following installed before running the script:
+🛠️ Prerequisites
+Ensure your system meets the following requirements before executing the script:
 
-Bash (v4 or higher)
+1. Bash Shell
+Version: Bash 4.0 or higher
 
-Python 3
+Purpose: Required to execute the deploy_agent.sh script, interactive menus, and regular expression checks.
 
-zip utility
+2. Python 3
+Command: python3
 
- How to Run
+Purpose: Required to run the core attendance application (attendance_checker.py) and perform safe JSON configuration updates.
+
+3. Zip Utility
+Command: zip
+
+Purpose: Required by the signal handler trap to automatically archive incomplete deployment folders upon emergency cancellation.
+
+📋 How to Run
 Make the deployment script executable:
 
 Bash
@@ -58,8 +67,7 @@ Launch the interactive menu:
 
 Bash
 ./deploy_agent.sh
-
-Interactive Menu Guide
+🎮 Interactive Menu Guide
 When you run the script, you will be greeted with the Main Menu:
 
 Plaintext
@@ -76,7 +84,7 @@ MAIN MENU
 
 4) Exit: Safely exits the script.
 
- Signal Handling & Error Recovery
+🛑 Signal Handling & Error Recovery
 If you interrupt a deployment using Ctrl+C or Ctrl+Z, the script automatically triggers the handle_interrupt safety trap:
 
 Compresses the incomplete workspace into attendance_tracker_<tag>_archive.zip.
