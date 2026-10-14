@@ -1,5 +1,6 @@
-Markdown
 # Attendance Tracker Deployment Agent (`deploy_agent.sh`)
+
+[![Watch Video Demo](https://img.shields.io/badge/Watch-Video%20Walkthrough-blue?style=for-the-badge&logo=google-drive)](https://drive.google.com/file/d/1LsJCo--kayvBNOJnJwrBiJslf9leE3kN/view?usp=sharing)
 
 A production-grade Bash automation script designed to deploy, configure, run, and manage the Attendance Tracking system. This script automates environment setup, enforces robust input validation, utilizes safe Python-based configuration management, and implements graceful signal trapping for flawless error cleanup.
 
